@@ -7,7 +7,6 @@ import java.util.*;
 
 //The Sun's Location
 int SunX, SunY;
-int SunX2, SunY2;
 int SunOrbit;
 int SunAngle;
 
@@ -60,7 +59,7 @@ void Sun(int x, int y) {
   fill(#FFF940);
   strokeWeight(3);
   stroke(#FFB617);
-  ellipse(x, y + 950, 200, 200);
+  ellipse(x, y+ 950, 200, 200);
   
   popMatrix();
 }
