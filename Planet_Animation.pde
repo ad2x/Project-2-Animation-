@@ -5,15 +5,25 @@
 //The Sun's Location
 float SunAngle;
 
+//Sun lighting var
+int Light;
+int darkness;
+
 void setup() {  
   //Window
   size(800, 600);
   
   //Sun Loc Variable
   SunAngle = 0;
+  
+  //Light var 
+  Light = 1;
+  
+  //Change how much everything is darkened w the sun offscreen
+  darkness = 20;
 }
 
-void draw() {
+void draw() {  
   //Change framrate w mouse
   frameRate(mouseX/5 + 10);
   
@@ -32,7 +42,17 @@ void draw() {
   if (SunAngle == 6.2700405) {
     SunAngle = 0;
   }
-    
+  
+  //If the sun goes offscreen the light var gets turned off  
+  if (SunAngle == 0.6299997) {
+    Light = 0;
+  }
+  
+  // If the sun goes on screen the light var gets turned on 
+  if (SunAngle == 5.8300304) {
+    Light = 1;
+  }  
+  
   //Layer order
   Sun(400, 1250);
   Planet();
@@ -44,9 +64,9 @@ void Planet() {
   translate(400, 300);
   
   //Object details
-  strokeWeight(1);
-  stroke(#1B20E3);
-  fill(#1B20E3);
+  strokeWeight(2);
+  stroke(27 + darkness * Light * 2,59 + darkness * Light * 2,227 + darkness * Light * 2); 
+  fill(75 + darkness * Light, 105 + darkness * Light, 245 + darkness * Light);
   ellipse(0, 950, 1600, 1600);
   
   popMatrix();
