@@ -273,7 +273,7 @@ void Raft(int x, int y) {
   fill(110 + Shading, 65 + Shading, 5 + Shading);
   rect(-50, -725, 75, 100);
   
-  //Flage pole
+  //Flag pole
   strokeWeight(3);
   stroke(0);
   fill(255);
