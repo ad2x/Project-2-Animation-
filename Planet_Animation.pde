@@ -12,6 +12,9 @@ int darkness;
 //CLoud angle var
 float CloudAngle1, CloudAngle2, CloudAngle3, CloudAngle4, CloudAngle5, CloudAngle6;
 
+//Shading var (combined Light and darkness vars because the code looks nicer this way)
+int Shading;
+
 void setup() {  //---------------------------------------------------------------------------------------------------------------
   //Window
   size(800, 600);
@@ -32,6 +35,9 @@ void setup() {  //--------------------------------------------------------------
   CloudAngle4 = 1;
   CloudAngle5 = 3;
   CloudAngle6 = 5;
+  
+  //Shading var
+  Shading = 0;
 } // ---------------------------------------------------------------------------------------------------------------------------------
 
 void draw() {  //-------------------------------------------------------------------------------------------------------------------------------
@@ -64,6 +70,9 @@ void draw() {  //---------------------------------------------------------------
     Light = 1;
   }  
   
+  //Shading update
+  Shading = darkness * Light;
+    
   //Angle of clouds increasing
   CloudAngle1 = CloudAngle1 + 0.005;
   CloudAngle2 = CloudAngle2 + 0.005;
@@ -90,8 +99,8 @@ void Planet() {
   
   //Object details
   strokeWeight(2);
-  stroke(27 + darkness * Light * 2,59 + darkness * Light * 2,227 + darkness * Light * 2); // The light determines if the second value is added (0 or 1), the darkness value can be changed to affect how dark things are without the sun, and the 2 is so outlines darken more than fill
-  fill(75 + darkness * Light, 105 + darkness * Light, 245 + darkness * Light);
+  stroke(27 + Shading * 2,59 + Shading * 2,227 + Shading * 2); // The light determines if the second value is added (0 or 1), the darkness value can be changed to affect how dark things are without the sun, and the 2 is so outlines darken more than fill
+  fill(75 + Shading, 105 + Shading, 245 + Shading);
   ellipse(0, 950, 1600, 1600);
   
   popMatrix();
@@ -124,8 +133,8 @@ void Cloud1(int x, int y) {
   
   //Colours etc.
   strokeWeight(4);
-  stroke(75 + darkness * Light * 2, 75 + darkness * Light * 2, 75 + darkness * Light * 2);
-  fill(115 + darkness * Light, 115 + darkness * Light, 115 + darkness * Light);
+  stroke(75 + Shading * 2, 75 + Shading * 2, 75 + Shading * 2);
+  fill(115 + Shading, 115 + Shading, 115 + Shading);
   
   //Object details
   ellipse(-50, -800, 75, 75);
@@ -145,8 +154,8 @@ void Cloud2(int x, int y) {
   
   //Colours etc.
   strokeWeight(4);
-  stroke(75 + darkness * Light * 2, 75 + darkness * Light * 2, 75 + darkness * Light * 2);
-  fill(115 + darkness * Light, 115 + darkness * Light, 115 + darkness * Light);
+  stroke(75 + Shading * 2, 75 + Shading * 2, 75 + Shading * 2);
+  fill(115 + Shading, 115 + Shading, 115 + Shading);
   
   //Object details
   ellipse(-50, -800, 100, 100);
@@ -166,8 +175,8 @@ void Cloud3(int x, int y) {
   
   //Colours etc.
   strokeWeight(4);
-  stroke(75 + darkness * Light * 2, 75 + darkness * Light * 2, 75 + darkness * Light * 2);
-  fill(115 + darkness * Light, 115 + darkness * Light, 115 + darkness * Light);
+  stroke(75 + Shading * 2, 75 + Shading * 2, 75 + Shading * 2);
+  fill(115 + Shading, 115 + Shading, 115 + Shading);
   
   //Object details
   ellipse(-50, -800, 85, 85);
@@ -187,8 +196,8 @@ void Cloud4(int x, int y) {
   
   //Colours etc.
   strokeWeight(4);
-  stroke(75 + darkness * Light * 2, 75 + darkness * Light * 2, 75 + darkness * Light * 2);
-  fill(115 + darkness * Light, 115 + darkness * Light, 115 + darkness * Light);
+  stroke(75 + Shading * 2, 75 + Shading * 2, 75 + Shading * 2);
+  fill(115 + Shading, 115 + Shading, 115 + Shading);
   
   //Object details
   ellipse(-50, -800, 75, 75);
@@ -208,8 +217,8 @@ void Cloud5(int x, int y) {
   
   //Colours etc.
   strokeWeight(4);
-  stroke(75 + darkness * Light * 2, 75 + darkness * Light * 2, 75 + darkness * Light * 2);
-  fill(115 + darkness * Light, 115 + darkness * Light, 115 + darkness * Light);
+  stroke(75 + Shading * 2, 75 + Shading * 2, 75 + Shading * 2);
+  fill(115 + Shading, 115 + Shading, 115 + Shading);
   
   //Object details
   ellipse(-50, -800, 100, 100);
@@ -229,8 +238,8 @@ void Cloud6(int x, int y) {
   
   //Colours etc.
   strokeWeight(4);
-  stroke(75 + darkness * Light * 2, 75 + darkness * Light * 2, 75 + darkness * Light * 2);
-  fill(115 + darkness * Light, 115 + darkness * Light, 115 + darkness * Light);
+  stroke(75 + Shading * 2, 75 + Shading * 2, 75 + Shading * 2);
+  fill(115 + Shading, 115 + Shading, 115 + Shading);
   
   //Object details
   ellipse(-50, -800, 85, 85);
