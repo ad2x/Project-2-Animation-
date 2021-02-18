@@ -15,6 +15,9 @@ float CloudAngle1, CloudAngle2, CloudAngle3, CloudAngle4, CloudAngle5, CloudAngl
 //Shading var (combined Light and darkness vars because the code looks nicer this way)
 int Shading;
 
+//Raft angle
+float RaftAngle;
+
 void setup() {  //---------------------------------------------------------------------------------------------------------------
   //Window
   size(800, 600);
@@ -38,6 +41,9 @@ void setup() {  //--------------------------------------------------------------
   
   //Shading var
   Shading = 0;
+  
+  //Raft angle starting point
+  RaftAngle = 6.2;
 } // ---------------------------------------------------------------------------------------------------------------------------------
 
 void draw() {  //-------------------------------------------------------------------------------------------------------------------------------
@@ -81,6 +87,9 @@ void draw() {  //---------------------------------------------------------------
   CloudAngle5 = CloudAngle5 + 0.005;
   CloudAngle6 = CloudAngle6 + 0.005;
   
+  //Raft angle increasing
+  RaftAngle = RaftAngle + 0.008;
+  
   //Layer order
   Sun(400, 1250);
   Planet();
@@ -90,6 +99,7 @@ void draw() {  //---------------------------------------------------------------
   Cloud4(400, 1250);
   Cloud5(400, 1250);
   Cloud6(400, 1250);
+  Raft(400, 1250);
 }//----------------------------------------------------------------------------------------------------------------------------------------------------
 
 //Planet at bottom of screen
@@ -133,8 +143,8 @@ void Cloud1(int x, int y) {
   
   //Colours etc.
   strokeWeight(4);
-  stroke(75 + Shading * 2, 75 + Shading * 2, 75 + Shading * 2);
-  fill(115 + Shading, 115 + Shading, 115 + Shading);
+  stroke(75 + Shading * 2);
+  fill(115 + Shading);
   
   //Object details
   ellipse(-50, -800, 75, 75);
@@ -154,8 +164,8 @@ void Cloud2(int x, int y) {
   
   //Colours etc.
   strokeWeight(4);
-  stroke(75 + Shading * 2, 75 + Shading * 2, 75 + Shading * 2);
-  fill(115 + Shading, 115 + Shading, 115 + Shading);
+  stroke(75 + Shading * 2);
+  fill(115 + Shading);
   
   //Object details
   ellipse(-50, -800, 100, 100);
@@ -175,8 +185,8 @@ void Cloud3(int x, int y) {
   
   //Colours etc.
   strokeWeight(4);
-  stroke(75 + Shading * 2, 75 + Shading * 2, 75 + Shading * 2);
-  fill(115 + Shading, 115 + Shading, 115 + Shading);
+  stroke(75 + Shading * 2);
+  fill(115 + Shading);
   
   //Object details
   ellipse(-50, -800, 85, 85);
@@ -196,8 +206,8 @@ void Cloud4(int x, int y) {
   
   //Colours etc.
   strokeWeight(4);
-  stroke(75 + Shading * 2, 75 + Shading * 2, 75 + Shading * 2);
-  fill(115 + Shading, 115 + Shading, 115 + Shading);
+  stroke(75 + Shading * 2);
+  fill(115 + Shading);
   
   //Object details
   ellipse(-50, -800, 75, 75);
@@ -217,8 +227,8 @@ void Cloud5(int x, int y) {
   
   //Colours etc.
   strokeWeight(4);
-  stroke(75 + Shading * 2, 75 + Shading * 2, 75 + Shading * 2);
-  fill(115 + Shading, 115 + Shading, 115 + Shading);
+  stroke(75 + Shading * 2);
+  fill(115 + Shading);
   
   //Object details
   ellipse(-50, -800, 100, 100);
@@ -238,13 +248,42 @@ void Cloud6(int x, int y) {
   
   //Colours etc.
   strokeWeight(4);
-  stroke(75 + Shading * 2, 75 + Shading * 2, 75 + Shading * 2);
-  fill(115 + Shading, 115 + Shading, 115 + Shading);
+  stroke(75 + Shading * 2);
+  fill(115 + Shading);
   
   //Object details
   ellipse(-50, -800, 85, 85);
   ellipse(50, -800, 65, 65);
   ellipse(0, -800, 90, 90);
+  
+  popMatrix();
+}
+
+//Little raft on the water
+void Raft(int x, int y) {
+  pushMatrix();
+  translate(x, y);
+  
+  //Rotation :)
+  rotate(RaftAngle);
+  
+  //Body of raft
+  strokeWeight(0.5);
+  stroke(75 + Shading * 2, 45 + Shading * 2, 5 + Shading * 2);
+  fill(110 + Shading, 65 + Shading, 5 + Shading);
+  rect(-50, -725, 75, 100);
+  
+  //Flage pole
+  strokeWeight(3);
+  stroke(0);
+  fill(255);
+  ellipse(0, -715, 10, 10);
+  
+  //Flag
+  strokeWeight(1);
+  stroke(0);
+  fill(255);
+  triangle(-50, -730, 0, -715, 0, -700);
   
   popMatrix();
 }
