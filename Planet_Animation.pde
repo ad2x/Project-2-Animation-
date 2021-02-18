@@ -5,7 +5,7 @@
 //The Sun's Location
 float SunAngle;
 
-void setup() {
+void setup() {  
   //Window
   size(800, 600);
   
@@ -14,17 +14,25 @@ void setup() {
 }
 
 void draw() {
+  //Change framrate w mouse
+  frameRate(mouseX/5 + 10);
+  
   //Background (Refreshes image)
   background(0);
 
   //Angle of sun increasing
   SunAngle = SunAngle + 0.01;
   
-  //Reset sun pos in sky
-  if (SunAngle == 1.5) {
-    SunAngle = 0.5;
+  //Halves the time the sun is offscreen so there day/night cycle is relatively even
+  if (SunAngle == 1.4999989) {
+    SunAngle = 4.5;
   }
   
+  //Resets the suns radian value each rotation so the prior if statement works
+  if (SunAngle == 6.2700405) {
+    SunAngle = 0;
+  }
+    
   //Layer order
   Sun(400, 1250);
   Planet();
