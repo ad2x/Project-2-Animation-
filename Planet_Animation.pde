@@ -9,7 +9,10 @@ float SunAngle;
 int Light;
 int darkness;
 
-void setup() {  
+//CLoud angle var
+float CloudAngle1, CloudAngle2, CloudAngle3, CloudAngle4, CloudAngle5, CloudAngle6;
+
+void setup() {  //---------------------------------------------------------------------------------------------------------------
   //Window
   size(800, 600);
   
@@ -21,9 +24,17 @@ void setup() {
   
   //Change how much everything is darkened w the sun offscreen
   darkness = 20;
-}
+  
+  //Cloud Angle variables
+  CloudAngle1 = 6;
+  CloudAngle2 = 2;
+  CloudAngle3 = 0.3;
+  CloudAngle4 = 1;
+  CloudAngle5 = 3;
+  CloudAngle6 = 5;
+} // ---------------------------------------------------------------------------------------------------------------------------------
 
-void draw() {  
+void draw() {  //-------------------------------------------------------------------------------------------------------------------------------
   //Change framrate w mouse
   frameRate(mouseX/5 + 10);
   
@@ -53,10 +64,24 @@ void draw() {
     Light = 1;
   }  
   
+  //Angle of clouds increasing
+  CloudAngle1 = CloudAngle1 + 0.005;
+  CloudAngle2 = CloudAngle2 + 0.005;
+  CloudAngle3 = CloudAngle3 + 0.005;
+  CloudAngle4 = CloudAngle4 + 0.005;
+  CloudAngle5 = CloudAngle5 + 0.005;
+  CloudAngle6 = CloudAngle6 + 0.005;
+  
   //Layer order
   Sun(400, 1250);
   Planet();
-}
+  Cloud1(400, 1250);
+  Cloud2(400, 1250);
+  Cloud3(400, 1250);
+  Cloud4(400, 1250);
+  Cloud5(400, 1250);
+  Cloud6(400, 1250);
+}//----------------------------------------------------------------------------------------------------------------------------------------------------
 
 //Planet at bottom of screen
 void Planet() {
@@ -65,7 +90,7 @@ void Planet() {
   
   //Object details
   strokeWeight(2);
-  stroke(27 + darkness * Light * 2,59 + darkness * Light * 2,227 + darkness * Light * 2); 
+  stroke(27 + darkness * Light * 2,59 + darkness * Light * 2,227 + darkness * Light * 2); // The light determines if the second value is added (0 or 1), the darkness value can be changed to affect how dark things are without the sun, and the 2 is so outlines darken more than fill
   fill(75 + darkness * Light, 105 + darkness * Light, 245 + darkness * Light);
   ellipse(0, 950, 1600, 1600);
   
@@ -85,6 +110,132 @@ void Sun(int x, int y) {
   strokeWeight(3);
   stroke(#FFB617);
   ellipse(0, -875, 200, 200);
+  
+  popMatrix();
+}
+
+//Clouds circling the planet (1st one)
+void Cloud1(int x, int y) {
+  pushMatrix();
+  translate(x, y);
+  
+  //Rotate stuff
+  rotate(CloudAngle1);
+  
+  //Colours etc.
+  strokeWeight(4);
+  stroke(75 + darkness * Light * 2, 75 + darkness * Light * 2, 75 + darkness * Light * 2);
+  fill(115 + darkness * Light, 115 + darkness * Light, 115 + darkness * Light);
+  
+  //Object details
+  ellipse(-50, -800, 75, 75);
+  ellipse(50, -800, 85, 85);
+  ellipse(0, -800, 100, 100);
+  
+  popMatrix();
+}
+
+//Clouds circling the planet (2nd one)
+void Cloud2(int x, int y) {
+  pushMatrix();
+  translate(x, y);
+  
+  //Rotate stuff
+  rotate(CloudAngle2);
+  
+  //Colours etc.
+  strokeWeight(4);
+  stroke(75 + darkness * Light * 2, 75 + darkness * Light * 2, 75 + darkness * Light * 2);
+  fill(115 + darkness * Light, 115 + darkness * Light, 115 + darkness * Light);
+  
+  //Object details
+  ellipse(-50, -800, 100, 100);
+  ellipse(50, -800, 80, 80);
+  ellipse(0, -800, 90, 90);
+  
+  popMatrix();
+}
+
+//Clouds circling the planet (3rd one)
+void Cloud3(int x, int y) {
+  pushMatrix();
+  translate(x, y);
+  
+  //Rotate stuff
+  rotate(CloudAngle3);
+  
+  //Colours etc.
+  strokeWeight(4);
+  stroke(75 + darkness * Light * 2, 75 + darkness * Light * 2, 75 + darkness * Light * 2);
+  fill(115 + darkness * Light, 115 + darkness * Light, 115 + darkness * Light);
+  
+  //Object details
+  ellipse(-50, -800, 85, 85);
+  ellipse(50, -800, 65, 65);
+  ellipse(0, -800, 90, 90);
+  
+  popMatrix();
+}
+
+//Clouds circling the planet (4th one)
+void Cloud4(int x, int y) {
+  pushMatrix();
+  translate(x, y);
+  
+  //Rotate stuff
+  rotate(CloudAngle4);
+  
+  //Colours etc.
+  strokeWeight(4);
+  stroke(75 + darkness * Light * 2, 75 + darkness * Light * 2, 75 + darkness * Light * 2);
+  fill(115 + darkness * Light, 115 + darkness * Light, 115 + darkness * Light);
+  
+  //Object details
+  ellipse(-50, -800, 75, 75);
+  ellipse(50, -800, 85, 85);
+  ellipse(0, -800, 100, 100);
+  
+  popMatrix();
+}
+
+//Clouds circling the planet (5th one)
+void Cloud5(int x, int y) {
+  pushMatrix();
+  translate(x, y);
+  
+  //Rotate stuff
+  rotate(CloudAngle5);
+  
+  //Colours etc.
+  strokeWeight(4);
+  stroke(75 + darkness * Light * 2, 75 + darkness * Light * 2, 75 + darkness * Light * 2);
+  fill(115 + darkness * Light, 115 + darkness * Light, 115 + darkness * Light);
+  
+  //Object details
+  ellipse(-50, -800, 100, 100);
+  ellipse(50, -800, 80, 80);
+  ellipse(0, -800, 90, 90);
+  
+  popMatrix();
+}
+
+//Clouds circling the planet (6th one)
+void Cloud6(int x, int y) {
+  pushMatrix();
+  translate(x, y);
+  
+  //Rotate stuff
+  rotate(CloudAngle6);
+  
+  //Colours etc.
+  strokeWeight(4);
+  stroke(75 + darkness * Light * 2, 75 + darkness * Light * 2, 75 + darkness * Light * 2);
+  fill(115 + darkness * Light, 115 + darkness * Light, 115 + darkness * Light);
+  
+  //Object details
+  ellipse(-50, -800, 85, 85);
+  ellipse(50, -800, 65, 65);
+  ellipse(0, -800, 90, 90);
   
   popMatrix();
 }
